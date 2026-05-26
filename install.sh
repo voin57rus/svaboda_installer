@@ -4,12 +4,15 @@ echo "🚀 Installing bot..."
 
 cd /root || exit 1
 
-if [ -d "svaboda_admin" ]; then
-    rm -rf svaboda_admin
-fi
+rm -rf svaboda_admin
 
 git clone git@github.com:voin57rus/svaboda_admin.git
 
 cd svaboda_admin || exit 1
 
-bash install.sh
+if [ -f "install.sh" ]; then
+    bash install.sh
+else
+    echo "❌ install.sh not found"
+    exit 1
+fi
